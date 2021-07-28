@@ -3,7 +3,7 @@
     "path": "~/Documentos/R-projects/vitae/cv_frzambra_july2021/cv_frzambra_july2021.Rmd",
     "project_path": "cv_frzambra_july2021/cv_frzambra_july2021.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "1435071257",
     "contents": "",
     "dirty": false,
     "created": 1625676731646.0,
@@ -12,16 +12,16 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "59,70",
-        "scrollLine": "52",
-        "last_setup_crc32": ""
+        "cursorPosition": "159,11",
+        "scrollLine": "145",
+        "last_setup_crc32": "78960459a5b3f4f1"
     },
     "folds": "",
-    "lastKnownWriteTime": 1625868514,
+    "lastKnownWriteTime": 1627507873,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1625868514341,
+    "last_content_update": 1627507873913,
     "read_only": false,
     "read_only_alternatives": []
 }

@@ -10,19 +10,30 @@ twitter: frzambra
 github: frzambra
 linkedin: frzambra
 date: "`r format(Sys.time(), '%B %Y')`"
-output: vitae::awesomecv
+output: 
+  vitae::awesomecv:
+    keep_tex: false
+always_allow_html: yes
+header-includes:
+  \usepackage{float}
+  \usepackage{multicol}
+  \usepackage{colortbl}
+  \arrayrulecolor{white}
+  \usepackage{hhline}
+  \definecolor{light-gray}{gray}{0.95}
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 library(vitae)
+library(kableExtra)
 ```
 
-# Some stuff about me
+<!-- # Some stuff about me -->
 
- * I poisoned myself doing research.
- * I was the first woman to win a Nobel prize
- * I was the first person and only woman to win a Nobel prize in two different sciences.
+<!--  * I poisoned myself doing research. -->
+<!--  * I was the first woman to win a Nobel prize -->
+<!--  * I was the first person and only woman to win a Nobel prize in two different sciences. -->
 
 # Education
 
@@ -82,6 +93,35 @@ tribble(
   ) %>%  detailed_entries(role, dates, university, loc, details)
 ```
 
+## Journals Reviewer
+
+```{r reviewer}
+tribble(
+  ~journal, ~numRev,~FI,
+  "Journal", "Reviews (#)","Impact Factor",
+  "Remote Sensing", "29", "4.848",
+  "IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing", "5", "3.784",
+  "Journal of Hydrology","5","5.722",
+  "Remote Sensing of Environment", "5", "10.164",
+  "IEEE Access", "4","3.367",
+  "ISPRS International Journal of Geo-Information","4","2.899",
+  "Atmospheric Research", "2", "5.369",
+  "Science of the Total Environment","2","7.963") %>%  
+  brief_entries(journal, numRev, FI)
+
+```
+## Journal Editor
+
+```{r editor}
+tribble(~title,~journal,~year,
+        "New Insights into Ecosystem Monitoring Using Geospatial Techniques","Remote Sensing", 2021) %>% 
+  brief_entries(title,journal, year)
+```
+
+
+  
+  
+
 # Teaching experience
 
 ## University Tutoring
@@ -97,3 +137,26 @@ tribble(
 ) %>% 
   brief_entries(glue::glue("\\textbf{<code>}: <title> (<campus>)", .open = "<", .close = ">"), semester, .protect = FALSE)
 ```
+
+# Technical skills
+
+```{r techtable, results='markup'}
+tribble(
+    ~area, ~skills,
+    "Programming Languages",   "R -- Matlab -- Python -- C++",
+    "Markup Languages", "HTML, LaTeX, Markdown, RMarkdown",
+    "GIS", "QGIS",
+    "Database", "PostgreSQL -- SQL",
+    "Version Control", "Git -- Github",
+    "Cloud", "Docker -- Google Cloud"
+) %>%
+  brief_entries(
+    with = area,
+    what = skills
+  )
+
+```
+
+# Languages
+
+Native Spanish speaker and proficient in English
