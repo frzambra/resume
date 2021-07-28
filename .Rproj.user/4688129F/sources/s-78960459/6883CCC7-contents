@@ -1,0 +1,99 @@
+---
+name: Francisco
+surname: Zambrano Bigiarini
+position: "Associate Professor"
+address: "Centro de Observación de la Tierra Hémera, Universidad Mayor"
+phone: +56 9684 77864
+www: frzambra.github.io
+email: "frzambra@gmail.com"
+twitter: frzambra
+github: frzambra
+linkedin: frzambra
+date: "`r format(Sys.time(), '%B %Y')`"
+output: vitae::awesomecv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+```
+
+# Some stuff about me
+
+ * I poisoned myself doing research.
+ * I was the first woman to win a Nobel prize
+ * I was the first person and only woman to win a Nobel prize in two different sciences.
+
+# Education
+
+```{r}
+library(tibble)
+tribble(
+  ~ Degree, ~ Year, ~ Institution, ~ Where, ~Details,
+  "Doctor in Agricultural Engineering mention Water Resources", "2013-2017", "Universidad de Concepción", "Chile",
+  list("Dissertation title: `Agricultural drought in Chile: from the assessment toward prediction using satellite data`"),
+  "Agricultural Civil Engineer", "2000-2006", "Universidad de Concepción", "Chile",
+  list("Thesis title: `Efecto de la aplicacion diferencial de agua y fertilizante sobre la produccion y calidad de la vid cv. Carmenere`")
+) %>% 
+  detailed_entries(Degree, Year, Institution, Where, Details)
+```
+# Projects
+
+```{r}
+tribble(
+  ~Year, ~Position,~Type, ~Desc,
+  2020, "Co-Investigator", "Fondecyt Regular N°1210526", "Multivariate drought monitor system: biophysical modelling, remote sensing and hydroclimatic information for drought analyisis and forecasting in agriculture",
+  2019, "Principal Investigator", "Fondecyt Iniciación N°11190360", "The impact of weather variability on wheat and maize production: an improved early warning model for agricultural drought",
+  2021, "Principal Investigator", "Fondef Idea I+D 2021 (under review)", "Sistema Satelital para la Optimización de Riego (SatOri)",
+  2021, "Principal Investigator", "Fondequip Mediano 2021 (under review)", "UAV con sensor hiperespectral de rango completo (400-2500 nm) para la evaluación de los cambios en la dinámica vegetacional y geológica"
+) %>% 
+   detailed_entries(Desc, Position, Type, Year)
+
+```
+
+# Selected publications
+
+```{r}
+library(dplyr)
+knitr::write_bib(c("vitae", "tibble"), "packages.bib")
+
+bibliography_entries("publications.bib") %>% filter(id != "Rivas2020") %>% 
+  arrange(desc(issued))
+```
+
+\newpage
+# Research experience
+
+```{r scholar}
+tribble(
+  ~ role, ~ university, ~ loc, ~ dates, ~ details,
+    "Agricultural drought prediction", "Faculty of Geo-Information Science and Earth Observation (ITC), University of Twente", "Enschede, The Netherlands", "Sep. 2016 - Dec. 2016", 
+    list("We used time-series of satellite dataset MODIS and CHIRPS 2.0 for 2000-2018",
+    "The aim was the prediction of agricultural drought over the 90% of the cultivated land in Chile",
+    "Manuscript published in the journal Remote Sensing of Environment (RSE)"),
+  "Satellite dataset for meteorological drought","Center for Advanced Land Management Information Technologies (CALMIT), University of Nebraska", "Lincoln, NE, USA","Jan. 2016 - Jul. 2016",
+  list("We used time series of satellite estimates for precipitation",
+       "The aim was to evaluate the performance of those dataset over Chile",
+       "Manuscript published in the journal Atmospheric Research (ATMOS)"),
+  "Consultant", "Agricultural Research Institute (INIA)", "CRI Quilamapu, Chillán", "Apr. 2012 - Mar. 2015", 
+    list("I worked in drought monitoring using satellite and in-situ climatic data",
+         "I proposed, derived and assess an agricultural drought index to be applied in Chile for agricutural drought monitoring",
+         "The assessment of the index over the Bio-Bio Region in Chile was published on June 2016 in the Remote Sensing Journal")
+  ) %>%  detailed_entries(role, dates, university, loc, details)
+```
+
+# Teaching experience
+
+## University Tutoring
+
+<!-- My teaching quality at Monash University has been consistently recognised with positive student evaluations and individual praise from my students. I have also been awarded six congratulatory letters for outstanding student evaluations for four of my units (ETF5231, ETC3580, ETC3550, ETC5523), which indicates that student feedback for the unit is among the best in the university. -->
+
+```{r tutoring}
+tribble(
+  ~ title, ~ code, ~ campus, ~ semester, ~ purple,
+  "Geoestatistics", "METE133", "Magister en Teledetección, Universidad Mayor", "2020 S2", NA,
+  "Introduction to spatial analysis with R", "METE132", "Magister en Teledetección, Universidad Mayor", "2020 S1", TRUE,
+  "Geographic Information Systems (GIS)", "AGRE1001", "Escuela de Agronomía, Universidad Mayor", "2019-2021", TRUE
+) %>% 
+  brief_entries(glue::glue("\\textbf{<code>}: <title> (<campus>)", .open = "<", .close = ">"), semester, .protect = FALSE)
+```

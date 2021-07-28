@@ -1,0 +1,6 @@
+install.packages('rorcid')
+library(rorcid)
+
+orcid_data <- do.call("rbind",
+                      rorcid::orcid_educations("0000-0001-6896-8534")$`0000-0001-6896-8534`$`affiliation-group`$summaries
+)
